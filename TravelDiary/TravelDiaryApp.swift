@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct TravelDiaryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                store: Store(initialState: PlaceFeature.State()) {
+                    PlaceFeature()
+                }
+            )
         }
     }
 }
