@@ -23,6 +23,7 @@ struct PlaceFeature {
             self.rating = rating
             self.feelings = feelings
         }
+        
     }
     
     enum Action: Equatable, BindableAction {
