@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import SwiftData
 
 @Reducer
 struct PlaceFeature {
@@ -15,13 +16,13 @@ struct PlaceFeature {
         var placeName: String
         var photo: String
         var rating: Double
-        var feelings: String
+        var description: String
         init(placeName: String = "", photo: String = "",
-             rating: Double = 0.0, feelings: String = "") {
+             rating: Double = 0.0, description: String = "") {
             self.placeName = placeName
             self.photo = photo
             self.rating = rating
-            self.feelings = feelings
+            self.description = description
         }
         
     }
@@ -47,19 +48,34 @@ struct PlaceFeature {
     }
 }
 struct ContentView: View {
-    @State var store: StoreOf<PlaceFeature>
-    
     var body: some View {
-        VStack {
-            TextField("Place name", text: $store.placeName)
-            TextField("Photo", text: $store.photo)
-        }
+        SignInFeatureView()        
     }
+//    @State var store: StoreOf<PlaceFeature>
+//    @Query var places: [PlaceData]
+//    @Environment(\.modelContext) var modelContext
+//    var body: some View {
+//        VStack {
+//            TextField("Place name", text: $store.placeName)
+//           // TextField("Photo", text: $store.photo)
+//        }
+//        VStack {
+//            List {
+//                ForEach(places) { place in
+//                    Text(place.placeName)
+//                }
+//            }
+//        }
+//        Button("Save name into SwiftData") {
+//            let place = PlaceData(placeName: store.placeName)
+//            modelContext.insert(place)
+//        }
+//    }
 }
 #Preview {
     ContentView(
-    store: Store(initialState: PlaceFeature.State()) {
-        PlaceFeature()
-    }
+//    store: Store(initialState: PlaceFeature.State()) {
+//        PlaceFeature()
+//    }
   )
 }
